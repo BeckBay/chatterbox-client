@@ -25,8 +25,18 @@ var App = {
 
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
+      var roomName = data.slice(0, 50);
       // examine the response from the server request:
       Messages._data.push(data.slice(0, 20));
+      roomName.forEach((name) => {
+        if (name.roomname !== null && !Rooms._data.includes(name.roomname)) {
+          if (name.roomname.length !== 0) {
+            Rooms._data.push(name.roomname);
+          }
+
+        }
+      });
+      App.stopSpinner();
       // TODO: Use the data to update Rooms
       // and re-render the corresponding views.
     });
