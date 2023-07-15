@@ -2,16 +2,15 @@
 // MessageView is responsible for rendering a single message.
 
 var MessageView = {
-  // Learn more about Underscore's templating capability
-  // here: https://underscorejs.org/#template.
-  // TODO: Update this template accordingly.
+  text: '',
+  username: '',
   render: _.template(`
-      <!--
       <div class="chat">
         <div class="username"></div>
+        <p><%=this.username%></p>
+        <h1><%=this.text%></h1>
         <div></div>
       </div>
-      -->
     `)
 
 };
